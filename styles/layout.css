@@ -1,0 +1,4 @@
+/* styles/layout.css */
+.my-header { background: #264653; color: #f4a261; font-size: 30px; text-align: center; padding: 30px; }
+.my-footer { background: #264653; color: #e9c46a; font-size: 30px; text-align: center; padding: 20px; }
+.content { background: lightgray; display: flex; justify-content: center; align-items: center; padding: 30px; }
