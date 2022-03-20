@@ -1,17 +1,16 @@
-// pages/_app.js
-import Navbar from '../components/Navbar'
-import { SessionProvider } from "next-auth/react"; 
+import Head from 'next/head'
 import '/styles/globals.css'
-import '@st/layout.css'
-import '../components/Navbar.css'
+import '/styles/prism.css'
 
 export default function MyApp({ Component, pageProps}) {
   return (
     <>
-      <SessionProvider session={pageProps.session}>
-        <Navbar />
-        <Component {...pageProps} />
-      </SessionProvider>
+      <Head>
+        <title>Anton Arbus blog</title>
+        <meta name='description' content='Personal blog about programming where Anton Arbus tests different technologies' />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <Component {...pageProps} />
     </>
   )
 }
