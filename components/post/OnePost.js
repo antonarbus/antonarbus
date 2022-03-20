@@ -135,6 +135,7 @@ const Article = styled.article`
     border-radius: 10px;
     font-size: 16px;
     padding: 20px;
+    padding-bottom: 10px;
     background: white;
     position: relative;
     background-color: transparent;

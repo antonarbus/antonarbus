@@ -1,9 +1,4 @@
-import { Code }  from '/components/post/Code'
-import { CodeSpan } from '/components/post/CodeSpan'
-import { H3 } from '/components/post/H3'
-import { H5 } from '/components/post/H5'
-import { LazyImg } from '/components/post/LazyImg'
-import { Lnk } from '/components/post/Lnk'
+import { styled, Code, CodeSpan, H3, H5, LazyImg, Lnk } from '/pages/posts/reExport'
 
 export const postObj = {
   title: <>Next.js basics</>,
@@ -1132,7 +1127,7 @@ export const postObj = {
         <li>Add styled components <code>npm i styled-components</code></li>
         <li>Install babel plugin <code>npm i -D babel-plugin-styled-components</code></li>
         <li>Then create a <code>.babelrc</code> file in the root of the project</li>
-        <li>Create <code>pages/_document.js</code></li>
+        <li>Create <code>/_document.js</code> at the root folder</li>
         <li>Add following <Lnk path='https://github.com/vercel/next.js/blob/main/examples/with-styled-components/pages/_document.js'>code</Lnk> to inject the server side rendered styles into the {'<head>'}</li>
       </ul>
 
@@ -1159,7 +1154,7 @@ export const postObj = {
       <p><code>_document.js</code></p>
 
       <Code lang='jsx'>{`
-      // pages/_document.js
+      // /_document.js
       import Document from 'next/document'
       import { ServerStyleSheet } from 'styled-components'
 
