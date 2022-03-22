@@ -15,18 +15,17 @@ export function H3(props) {
   }
 
   return (
-    <H3Styled
-      ref={ref}
-      onClick={addHashToUrl}
-    >
+    <h3 ref={ref} onClick={addHashToUrl}>
       {props.children}
-    </H3Styled>
+
+      <style jsx>{`
+        h3 {
+          cursor: pointer;
+          font-size: 20px;
+          margin-top: 20px;
+          text-align: center;
+        }
+      `}</style>
+    </h3>
   )
 }
-
-const H3Styled = styled.h3`
-  cursor: pointer;
-  font-size: 20px;
-  margin-top: 20px;
-  text-align: center;
-`

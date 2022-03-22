@@ -4,14 +4,16 @@ import { Tag } from './Tag'
 export function Tags(props) {
   const { tags } = props
   return (
-    <DivStyled>
+    <div className='tags'>
       {tags.map(tag => (
         <Tag tag={tag} key={tag} />
       ))}
-    </DivStyled>
+
+      <style jsx>{`
+        .tags {
+          margin-top: 20px; 
+        }
+      `}</style>
+    </div>
   )
 }
-
-const DivStyled = styled.div`
-  margin-top: 20px; ;
-`

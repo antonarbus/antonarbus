@@ -1,12 +1,22 @@
 import styled from 'styled-components'
 
 export function Num(props) {
-  return <SpanStyled>Post #{props.num}{props.children}</SpanStyled>
+  return (
+    <span>
+      Post #{props.num}
+      {props.children}
+      
+      <style jsx global>{`
+        .class {
+          position: absolute;
+          color: #b0b0b0;
+          top: -26px;
+          right: 5px;
+        }
+      `}</style>
+    </span>
+  )
+
+
 }
 
-const SpanStyled = styled.span`
-  position: absolute;
-  color: #b0b0b0;
-  top: -26px;
-  right: 5px;
-`

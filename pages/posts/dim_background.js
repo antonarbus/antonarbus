@@ -1,6 +1,11 @@
-import { styled, Code, CodeSpan, H3, H5, LazyImg, Lnk } from '/pages/posts/reExport'
+import { Code } from '../../components/post/reExport';
+import { OnePost } from '/components/post/OnePost'
 
-const Div1 = styled.div`
+export default function index() {
+  return <OnePost post={postObj} />;
+}
+
+const divStyle = `
   background-image: url('/imgs/headphones.jpg');
   background-size: cover;
   background-position: 50% 50%;
@@ -11,9 +16,6 @@ const Div1 = styled.div`
   height: 200px;
 `
 
-const Div2 = styled(Div1)`
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/imgs/headphones.jpg');
-`
 
 export const postObj = {
   title: 'Dim background image',
@@ -23,10 +25,32 @@ export const postObj = {
   body: (
     <>
       <p>Several background images separated by comma can be applied.</p>
-      <p>There is a CSS trick how we can dim an image putting a bit transparent gradient without gradient in front.</p>
-      <Div1 />
-      <code>background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/imgs/headphones.jpg')</code>
-      <Div2 />
+      <p>
+        There is a CSS trick how we can dim an image putting a bit transparent gradient without
+        gradient in front.
+      </p>
+
+      <div>
+        <style jsx>{`
+          div {
+            ${divStyle}
+          }
+        `}</style>
+      </div>
+
+      <code>
+        background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+        url('/imgs/headphones.jpg')
+      </code>
+
+      <div>
+        <style jsx>{`
+          div {
+            ${divStyle}
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/imgs/headphones.jpg');
+          }
+        `}</style>
+      </div>
 
       <Code>{`
       const Div1 = styled.div\`

@@ -3,13 +3,19 @@ import styled from 'styled-components'
 
 export function Lnk(props) {
   return (
-    <AStyled href={props.link || props.path || props.url || props.src || props.children} target="_blank">
+    <a
+      href={props.link || props.path || props.url || props.src || props.children}
+      target="_blank"
+      rel="noreferrer"
+    >
       {props.text}
       {props.children}
-    </AStyled>
+
+      <style jsx>{`
+        a {
+          color: #0098f7;
+        }
+      `}</style>
+    </a>
   )
 }
-
-const AStyled = styled.a`
-  color: #0098f7;
-`

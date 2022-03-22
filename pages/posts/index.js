@@ -1,7 +1,20 @@
+import * as posts from '/postsListReExport'
+import('/pages/posts/babel.js')
+  .then((module) => {
+    console.log(module)
+  })
+
 export default function Index(props) {
-  return (
-    <div>
-      I am the post
-    </div>
-  )
+
+  
+
+  console.log(posts)
+  return <div>{JSON.stringify(props.pages)}</div>
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+    },
+  }
 }

@@ -39,7 +39,7 @@ export function Code(props) {
 
   return (
     <pre ref={ref} style={{ margin: '20px 0px' }}>
-      <code className={`lang-${lang}`}>
+      <code className={`language-${lang}`}>
         {props.children}
       </code>
     </pre>

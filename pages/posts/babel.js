@@ -1,4 +1,9 @@
-import { styled, Code, CodeSpan, H3, H5, LazyImg, Lnk } from '/pages/posts/reExport'
+import { Code, H3, LazyImg, Lnk } from '../../components/post/reExport';
+import { OnePost } from '/components/post/OnePost'
+
+export default function index() {
+  return <OnePost post={postObj} />;
+}
 
 export const postObj = {
   title: 'Babel',

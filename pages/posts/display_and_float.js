@@ -1,4 +1,9 @@
-import { styled, Code, CodeSpan, H3, H5, LazyImg, Lnk, React, useState, useEffect, useRef } from '/pages/posts/reExport'
+import { H3, Lnk } from '../../components/post/reExport';
+import { OnePost } from '/components/post/OnePost'
+
+export default function index() {
+  return <OnePost post={postObj} />;
+}
 
 export const postObj = {
   title: 'Display & float property in CSS',

@@ -15,19 +15,18 @@ export function H5(props) {
   }
 
   return (
-    <H5Styled
-      ref={ref}
-      onClick={addHashToUrl}
-    >
+    <h5 ref={ref} onClick={addHashToUrl}>
       {props.children}
-    </H5Styled>
+
+      <style jsx>{`
+        h5 {
+          cursor: pointer;
+          font-size: 18px;
+          color: #5e5c5c;
+          margin-top: 20px;
+          text-align: center;
+        }
+      `}</style>
+    </h5>
   )
 }
-
-const H5Styled = styled.h5`
-  cursor: pointer;
-  font-size: 18px;
-  color: #5e5c5c;
-  margin-top: 20px;
-  text-align: center;
-`

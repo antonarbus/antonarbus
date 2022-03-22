@@ -1,5 +1,11 @@
+import { useEffect, useState, useRef } from '../../components/post/reExport';
+import { OnePost } from '/components/post/OnePost'
 import useInput from '/functions/useInput'
-import { styled, Code, CodeSpan, H3, H5, LazyImg, Lnk, React, useState, useEffect, useRef } from '/pages/posts/reExport'
+
+
+export default function index() {
+  return <OnePost post={postObj} />;
+}
 
 function Cmpt() {
   const [childrenQty, bindChildrenQty] = useInput(10)
@@ -62,36 +68,24 @@ function Cmpt() {
   }
 
   return (
-    <Div>
-      <div
-        style={{ ...parentStyle, ...parentCustomStyle }}
-        ref={ref}
-        className="parent"
-      >
+    <main>
+      <div style={{ ...parentStyle, ...parentCustomStyle }} ref={ref} className="parent">
         {parseInt(childrenQty) > 0 &&
-          new Array(parseInt(childrenQty))
-            .fill('', 0, parseInt(childrenQty))
-            .map((el, i) => (
-              <div
-                key={i}
-                contentEditable={true}
-                suppressContentEditableWarning={true}
-                style={{ ...childrenStyle, ...containerChildrenStyle }}
-                className="child"
-              >
-                div{i + 1} <br /> editable
-              </div>
-            ))}
+          new Array(parseInt(childrenQty)).fill('', 0, parseInt(childrenQty)).map((el, i) => (
+            <div
+              key={i}
+              contentEditable={true}
+              suppressContentEditableWarning={true}
+              style={{ ...childrenStyle, ...containerChildrenStyle }}
+              className="child"
+            >
+              div{i + 1} <br /> editable
+            </div>
+          ))}
       </div>
       <div>
         Number of divs inside flex box{' '}
-        <input
-          type="number"
-          min="1"
-          max="100"
-          {...bindChildrenQty}
-          style={{ width: '50px' }}
-        />
+        <input type="number" min="1" max="100" {...bindChildrenQty} style={{ width: '50px' }} />
       </div>
 
       <div className="cssContainer">
@@ -502,21 +496,13 @@ function Cmpt() {
         <div className="grid">
           <div>order:</div>
           <div>
-            <input
-              type="number"
-              min="0"
-              max="1000"
-              {...bindOrder}
-              style={{ width: '50px' }}
-            />
+            <input type="number" min="0" max="1000" {...bindOrder} style={{ width: '50px' }} />
           </div>
 
           <div>flex-basis:</div>
           <div>
             <input type="text" {...bindFlexBasis} style={{ width: '100px' }} />
-            <span style={{ marginLeft: '10px', fontSize: '12px' }}>
-              can be length or 'auto'
-            </span>
+            <span style={{ marginLeft: '10px', fontSize: '12px' }}>can be length or 'auto'</span>
           </div>
 
           <div>flex-grow:</div>
@@ -595,52 +581,49 @@ function Cmpt() {
         </div>
         <div>{'}'}</div>
       </div>
-    </Div>
+
+      <style jsx global>{`
+        main {
+          font-size: 12px;
+        }
+        .cssContainer {
+          border: 1px solid #c7c7c7;
+          border-radius: 6px;
+          margin: 10px 0px;
+          padding: 5px;
+          white-space: nowrap;
+          overflow: auto;
+        }
+        label {
+          margin-right: 5px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+        }
+        input {
+          margin-right: 5px;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: 100px auto;
+          gap: 5px 10px;
+          justify-self: end;
+        }
+        .grid > *:nth-child(2n + 1) {
+          justify-self: end;
+
+          display: flex;
+          align-items: center;
+        }
+        .grid > *:nth-child(2n) {
+          color: grey;
+          display: flex;
+          align-items: center;
+        }
+      `}</style>
+    </main>
   )
 }
-
-const Div = styled.div`
-  font-size: 12px;
-
-  .cssContainer {
-    border: 1px solid #c7c7c7;
-    border-radius: 6px;
-    margin: 10px 0px;
-    padding: 5px;
-    white-space: nowrap;
-    overflow: auto;
-  }
-
-  label {
-    margin-right: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-
-  input {
-    margin-right: 5px;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 100px auto;
-    gap: 5px 10px;
-    justify-self: end;
-
-    & > *:nth-child(2n + 1) {
-      justify-self: end;
-
-      display: flex;
-      align-items: center;
-    }
-    & > *:nth-child(2n) {
-      color: grey;
-      display: flex;
-      align-items: center;
-    }
-  }
-`
 
 export const postObj = {
   title: 'display: flex',

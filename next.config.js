@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  redirects: async () => {
+  redirects: async() => {
     return [
       {
         source: '/about',

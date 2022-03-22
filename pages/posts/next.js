@@ -1,4 +1,9 @@
-import { styled, Code, CodeSpan, H3, H5, LazyImg, Lnk } from '/pages/posts/reExport'
+import { Code, CodeSpan, H3, H5, LazyImg, Lnk } from '../../components/post/reExport';
+import { OnePost } from '/components/post/OnePost'
+
+export default function index() {
+  return <OnePost post={postObj} />;
+}
 
 export const postObj = {
   title: <>Next.js basics</>,
@@ -1121,13 +1126,36 @@ export const postObj = {
       }
       `}</Code>
 
-      <H5>Styles in JavaScript - styled components</H5>
+      <H5>SASS in styled-jsx</H5>
+
+      <ul>
+        <li><code>npm install --save-dev @styled-jsx/plugin-sass sass</code></li>
+        <li>Create a <code>.babelrc.json</code> file in the project folder</li>
+        <li>Restart the next server and reload the page.</li>
+      </ul>
+
+      <Code lang='json'>{`
+      {
+        "presets": [
+          [
+            "next/babel",
+            {
+              "styled-jsx": {
+                "plugins": ["@styled-jsx/plugin-sass"]
+              }
+            }
+          ]
+        ]
+      }
+      `}</Code>
+
+      <H5>Styled components</H5>
 
       <ul>
         <li>Add styled components <code>npm i styled-components</code></li>
         <li>Install babel plugin <code>npm i -D babel-plugin-styled-components</code></li>
         <li>Then create a <code>.babelrc</code> file in the root of the project</li>
-        <li>Create <code>/_document.js</code> at the root folder</li>
+        <li>Create <code>/pages/_document.js</code></li>
         <li>Add following <Lnk path='https://github.com/vercel/next.js/blob/main/examples/with-styled-components/pages/_document.js'>code</Lnk> to inject the server side rendered styles into the {'<head>'}</li>
       </ul>
 
@@ -1154,7 +1182,7 @@ export const postObj = {
       <p><code>_document.js</code></p>
 
       <Code lang='jsx'>{`
-      // /_document.js
+      // /pages/_document.js
       import Document from 'next/document'
       import { ServerStyleSheet } from 'styled-components'
 

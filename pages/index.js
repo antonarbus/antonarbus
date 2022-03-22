@@ -7,9 +7,8 @@ export default function Index() {
       <Link href="/posts">
         <a className="button">Posts</a>
       </Link>
-      <style jsx>{`2
-        --blackish: rgba(0, 0, 0, 0.65);
-        --grayish: rgba(0, 0, 0, 0.1);
+      
+      <style jsx>{`
         .container {
           display: flex;
           justify-content: center;
@@ -21,10 +20,10 @@ export default function Index() {
         }
         .button {
           cursor: pointer;
-          color: var(--blackish);
-          border: 1px solid var(--grayish);
+          color: rgba(0, 0, 0, 0.65);
+          border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 0.25rem;
-          box-shadow: var(--grayish) 0 1px 1px 0;
+          box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px 0;
           font-family: system-ui;
           font-size: 16px;
           font-weight: 600;
@@ -36,10 +35,10 @@ export default function Index() {
         }
         .button:hover,
         .button:focus {
-          box-shadow: var(--grayish) 0 4px 12px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
         }
         .button:active {
-          background: var(--grayish);
+          background: rgba(0, 0, 0, 0.1);
         }
       `}</style>
     </div>

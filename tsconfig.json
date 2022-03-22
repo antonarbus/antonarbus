@@ -29,8 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    "**/*.jsx"
-, "pages/posts/next/index.ts"  ],
+    "**/*.js"
+  ],
   "exclude": [
     "node_modules"
   ]

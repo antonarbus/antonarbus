@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "comma-dangle": ["error", "only-multiline"],
+    "react/no-unescaped-entities": "off",
+    "space-before-function-paren": ["error", "never"],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-template-curly-in-string": "off",
+    "no-use-before-define": "off",
+    "no-console": "off",
+    "semi": "off"
+  }
 }
