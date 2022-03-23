@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Search from '/components/search/Search'
 import jsxToStr from '/functions/jsxToStr'
 // import * as posts from '/postsListReExport'
 
@@ -11,7 +12,9 @@ export default function Index(props) {
         <meta name='description' content='Table of content for posts about web dev' />
       </Head>
 
-      <article>
+      <Search />
+
+      <div className='center'>
         <title>Posts</title>
         <section>
           {props.posts.map(post => (
@@ -22,12 +25,12 @@ export default function Index(props) {
             </div>
           ))}
         </section>
-      </article>
+      </div>
 
       
 
       <style jsx>{`
-        article { 
+        .center { 
           margin: 0 auto;
           margin-bottom: 20px;
           padding: 25px;
