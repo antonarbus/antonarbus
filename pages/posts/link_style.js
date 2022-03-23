@@ -173,7 +173,7 @@ function GoogleLink6() {
 }
 
 export const postObj = {
-  title: 'Link style',
+  title: 'link style',
   date: '2021.11.04',
   tags: ['CSS'],
   description: 'Link style',

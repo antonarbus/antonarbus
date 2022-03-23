@@ -7,17 +7,17 @@ export default function Index(props) {
   return (
     <>
       <Head>
-        <title>Table of content</title>
+        <title>Posts list</title>
         <meta name='description' content='Table of content for posts about web dev' />
       </Head>
 
       <article>
-        <title>Table of content</title>
+        <title>Posts</title>
         <section>
           {props.posts.map(post => (
             <div key={post.title}>
               <Link href={post.url}>
-                <a target="_blank">{post.title}</a>
+                <a>{post.title}</a>
               </Link>
             </div>
           ))}
@@ -65,7 +65,7 @@ export default function Index(props) {
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 1.05em;
+          height: 17px;
           background-color: #0083bf;
           transform: translateX(-100%) translateY(1em);
         }
@@ -80,6 +80,7 @@ export default function Index(props) {
 }
 
 export async function getStaticProps() {
+  
   // go through files in /pages & get file names of pages
   const fs = require('fs')
   const folder = './pages/posts/'
@@ -87,6 +88,7 @@ export async function getStaticProps() {
   const pageNames = fileNames.filter(
     fileName => fileName.includes('.js') && fileName !== '_xxx.js' && fileName !== 'index.js',
   )
+
   // import all variables from files
   const imports = pageNames.map(pageName => import(`/pages/posts/${pageName}`))
   const modules = await Promise.all(imports)

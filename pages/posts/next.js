@@ -6,7 +6,7 @@ export default function index() {
 }
 
 export const postObj = {
-  title: <>Next.js basics</>,
+  title: 'next',
   date: '2022.02.26',
   tags: ['next', 'basics'],
   description: 'Next.js basics from Codevolution tutorial ',

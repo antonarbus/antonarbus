@@ -18,7 +18,7 @@ const divStyle = `
 
 
 export const postObj = {
-  title: 'Dim background image',
+  title: 'dim background image',
   date: '2021.11.19',
   tags: ['CSS'],
   description: 'Put some dimming on top of an image with CSS',

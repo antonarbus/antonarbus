@@ -1,4 +1,4 @@
-import { Code, H3, H5, Lnk, React } from '/components/post/reExport';
+import { Code, H3, H5, Lnk, React } from '/components/post/reExport'
 import { OnePost } from '/components/post/OnePost'
 
 export default function index() {
@@ -7,8 +7,8 @@ export default function index() {
 
 function Component(props) {
   const { initOuterCss, initInnerCss } = props
-  const [outerStyleState, setOuterStyleState] = React.useState(initOuterCss)
-  const [innerStyleState, setInnerStyleState] = React.useState(initInnerCss)
+  const [ outerStyleState, setOuterStyleState ] = React.useState(initOuterCss)
+  const [ innerStyleState, setInnerStyleState ] = React.useState(initInnerCss)
   const updateOuterStyles = e => setOuterStyleState(e.target.value)
   const updateInnerStyles = e => setInnerStyleState(e.target.value)
   const textAreaStyle = { padding: '5px', width: '100%', height: '120px' }
@@ -32,15 +32,21 @@ function Component(props) {
       </div>
 
       <style jsx>{`
-        .outer { all: initial; ${outerStyleState} }
-        .inner { all: unset; ${innerStyleState} }
+        .outer { 
+          all: initial; 
+          ${outerStyleState}
+        }
+        .inner { 
+          all: unset; 
+          ${innerStyleState} 
+        }
       `}</style>
     </>
   )
 }
 
 export const postObj = {
-  title: 'Horizontal & vertical position in CSS',
+  title: 'horizontal & vertical position in CSS',
   date: '2022.02.12',
   tags: ['CSS', 'basics'],
   description: 'Horizontal & vertical position in CSS',

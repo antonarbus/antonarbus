@@ -90,7 +90,7 @@ function Cmpt(props) {
 }
 
 export const postObj = {
-  title: 'Glass style',
+  title: 'glass style',
   date: '2021.11.19',
   tags: ['CSS'],
   description: 'Glass style in CSS',

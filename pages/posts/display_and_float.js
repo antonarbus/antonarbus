@@ -6,7 +6,7 @@ export default function index() {
 }
 
 export const postObj = {
-  title: 'Display & float property in CSS',
+  title: 'display & float property in CSS',
   date: '2022.02.11',
   tags: ['CSS', 'basics'],
   description: 'Display & float property in CSS',

@@ -6,7 +6,7 @@ export default function index() {
 }
 
 export const postObj = {
-  title: 'Babel',
+  title: 'babel',
   date: '2021.12.08',
   tags: ['tools', 'JavaScript'],
   description: 'Babel tool ',

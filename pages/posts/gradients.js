@@ -21,7 +21,7 @@ function Cmpt(props) {
 }
 
 export const postObj = {
-  title: 'Gradients',
+  title: 'gradients',
   date: '2021.11.18',
   tags: ['CSS'],
   description: 'Gradients in CSS',
