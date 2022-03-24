@@ -1,51 +1,35 @@
 import Head from 'next/head'
 import Link from 'next/link'
+
+import { LinkBox } from '../../components/posts/LinkBox'
 import Search from '/components/search/Search'
 import jsxToStr from '/functions/jsxToStr'
-// import * as posts from '/postsListReExport'
 
 export default function Index(props) {
+  console.log(props)
   return (
     <>
       <Head>
         <title>Posts list</title>
-        <meta name='description' content='Table of content for posts about web dev' />
+        <meta name="description" content="Table of content for posts about web dev" />
       </Head>
 
       <Search />
 
-      <div className='center'>
+      <div className="center">
         <title>Posts</title>
-        <section>
-          {props.posts.map(post => (
-            <div key={post.title}>
-              <Link href={post.url}>
-                <a>{post.title}</a>
-              </Link>
-            </div>
-          ))}
-        </section>
+        {props.posts.map(post => (
+          <LinkBox key={post.title}>
+            <Link href={post.url}><a>{post.title}</a></Link>
+          </LinkBox>
+        ))}
       </div>
 
-      
-
       <style jsx>{`
-        .center { 
+        .center {
           margin: 0 auto;
           margin-bottom: 20px;
-          padding: 25px;
-          max-width: 600px;
-        }
-        section {
-          border-radius: 10px;
-          font-size: 16px;
-          padding: 20px;
-          padding-bottom: 10px;
-          background: white;
-          position: relative;
-          background-color: transparent;
-          background-image: linear-gradient(to right bottom,rgb(255 255 255 / 90%),rgb(255 255 255 / 90%));
-          box-shadow: #80808073 0px 0px 10px;
+          max-width: 90vw;
         }
         title {
           display: block;
@@ -104,6 +88,8 @@ export async function getStaticProps() {
       fileName: pageNames[index],
       path: `/pages/posts/${pageNames[index]}`,
       url: `/posts/${pageNames[index].replace('.js', '')}`,
+      tags: module.postObj.tags,
+      bodyText: jsxToStr(module.postObj.body)
     }
   })
 

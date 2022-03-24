@@ -7,6 +7,7 @@ import { InputWrapper } from './components/InputWrapper'
 import { Wrapper } from './components/Wrapper'
 import { Tag } from './components/Tag'
 
+
 // import { BtnCancel } from './components/BtnCancel'
 // import { BtnSearch } from './components/BtnSearch'
 // import { FoundPosts } from './components/FoundPosts'
@@ -76,43 +77,15 @@ export default function Search() {
     >
       <Wrapper>
         <InputWrapper>
+          <Tag tag='tagппппп' />
           <Tag tag='tag' />
           <Tag tag='tag' />
-          <Tag tag='tag' />
-   
 
           <Input />
           <BtnCancel />
         </InputWrapper>
         <BtnSearch />
       </Wrapper>
-
-      {/* 
-
-      <BtnCancel />
-      <BtnSearch />
-
-      {showRemoveFoundPostsMsgState && <RemoveFoundPosts />}
-      {showSearchMenuState && (
-        <SearchPreviewContainer>
-          <FoundPosts />
-          <TagsContainer />
-          {!!foundPostsState.length &&
-            searchInputValState &&
-            foundPostsState.map(o => {
-              return (
-                <SearchPreviewItem
-                  title={o.titleTxt}
-                  summary={foundPostsState.length < 10 && o.postTxt}
-                  uriPostName={o.uriPostName}
-                  key={`${o.id}_preview`}
-                />
-              )
-            })}
-        </SearchPreviewContainer>
-      )} 
-      
-      */}
 
       <style jsx>{`
         .container {

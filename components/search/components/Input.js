@@ -1,4 +1,4 @@
-export function Input(props) {
+export function Input() {
 
   return (
     <>

@@ -46,7 +46,7 @@ function Component(props) {
 }
 
 export const postObj = {
-  title: 'horizontal & vertical position in CSS',
+  title: 'X & Y position in CSS',
   date: '2022.02.12',
   tags: ['CSS', 'basics'],
   description: 'Horizontal & vertical position in CSS',

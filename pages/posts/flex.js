@@ -626,7 +626,7 @@ function Cmpt() {
 }
 
 export const postObj = {
-  title: 'display: flex',
+  title: 'flex',
   date: '2021.11.21',
   tags: ['CSS', 'property'],
   description: 'display: flex in CSS',
