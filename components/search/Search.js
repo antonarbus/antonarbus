@@ -79,15 +79,7 @@ export default function Search() {
           <Tag tag='tag' />
           <Tag tag='tag' />
           <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
+   
 
           <Input />
           <BtnCancel />
@@ -131,7 +123,7 @@ export default function Search() {
           width: 90vw;
           margin-top: 30px;
           height: 40px;
-          max-width: 500px;
+          max-width: 550px;
           position: relative;
           left: 50%;
           transform: translateX(-50%);

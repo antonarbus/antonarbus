@@ -18,7 +18,7 @@ export function Input(props) {
           min-width: 100px;
         }
         input::placeholder {
-          font-family: "Segoe UI";
+          font-family: "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
           font-weight: 100;
         }
       `}</style>
