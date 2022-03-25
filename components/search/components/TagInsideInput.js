@@ -63,7 +63,7 @@ export function TagInsideInput(props) {
           top: 50%; 
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 20px;
+          font-size: 16px;
           color: rgb(251, 122, 122);
         }
         .tag:hover.tag:after {

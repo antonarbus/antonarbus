@@ -14,7 +14,7 @@ const Context = createContext()
 
 function Parent1() {
   return (
-    <Context.Provider value={{age: 37}}>
+    <Context.Provider value={{ age: 37 }}>
       <A name='John' />
       <Age />
     </Context.Provider>
