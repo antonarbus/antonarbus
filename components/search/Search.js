@@ -9,6 +9,7 @@ import { TagInsideInput } from './components/TagInsideInput'
 import { SearchHints } from './components/SearchHints'
 import { FoundTags } from './components/FoundTags'
 import { FoundPostNames } from './components/FoundPostNames'
+import { TagsInsideInput } from './components/TagsInsideInput'
 
 
 export default function Search() {
@@ -72,10 +73,9 @@ export default function Search() {
     >
       <Wrapper>
         <InputWrapper>
-          <TagInsideInput tag='tag1' />
-          <TagInsideInput tag='tag2' />
-          <TagInsideInput tag='tag3' />
-          <Input /> <BtnCancel />
+          <TagsInsideInput />
+          <Input /> 
+          <BtnCancel />
         </InputWrapper>
         <BtnSearch />
         <SearchHints>
