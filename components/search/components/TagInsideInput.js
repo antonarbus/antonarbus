@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+
 // import setCaretToEnd from '/functions/setCaretToEnd'
 // import { useDispatch } from 'react-redux'
 // import { store } from '../../../App'
 
 
-export function Tag(props) {
+export function TagInsideInput(props) {
   // const dispatch = useDispatch()
 
   function clickHandler(e) {
@@ -58,12 +58,13 @@ export function Tag(props) {
         }
         .tag:after {
           display: none;
-          content: 'add';
+          content: '✕';
           position: absolute;
           top: 50%; 
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 10px;
+          font-size: 20px;
+          color: rgb(251, 122, 122);
         }
         .tag:hover.tag:after {
           display: block;

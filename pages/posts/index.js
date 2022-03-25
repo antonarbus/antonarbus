@@ -29,6 +29,7 @@ export default function Index(props) {
         .center {
           margin: 0 auto;
           margin-bottom: 20px;
+          margin-top: 100px;
           max-width: 90vw;
         }
         title {

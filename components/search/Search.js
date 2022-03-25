@@ -5,16 +5,11 @@ import { BtnSearch } from './components/BtnSearch'
 import { Input } from './components/Input'
 import { InputWrapper } from './components/InputWrapper'
 import { Wrapper } from './components/Wrapper'
-import { Tag } from './components/Tag'
+import { TagInsideInput } from './components/TagInsideInput'
+import { SearchHints } from './components/SearchHints'
+import { FoundTags } from './components/FoundTags'
+import { FoundPostNames } from './components/FoundPostNames'
 
-
-// import { BtnCancel } from './components/BtnCancel'
-// import { BtnSearch } from './components/BtnSearch'
-// import { FoundPosts } from './components/FoundPosts'
-// import { RemoveFoundPosts } from './components/RemoveFoundPosts'
-// import { SearchPreviewContainer } from './components/SearchPreviewContainer'
-// import { SearchPreviewItem } from './components/SearchPreviewItem'
-// import { TagsContainer } from './components/TagsContainer'
 
 export default function Search() {
 
@@ -77,14 +72,16 @@ export default function Search() {
     >
       <Wrapper>
         <InputWrapper>
-          <Tag tag='tagппппп' />
-          <Tag tag='tag' />
-          <Tag tag='tag' />
-
-          <Input />
-          <BtnCancel />
+          <TagInsideInput tag='tag1' />
+          <TagInsideInput tag='tag2' />
+          <TagInsideInput tag='tag3' />
+          <Input /> <BtnCancel />
         </InputWrapper>
         <BtnSearch />
+        <SearchHints>
+          <FoundTags />
+          <FoundPostNames />
+        </SearchHints>
       </Wrapper>
 
       <style jsx>{`
