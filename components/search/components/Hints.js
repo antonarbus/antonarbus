@@ -1,9 +1,14 @@
+// hits for tag and post names, doesn't to a post content
+import { useContext } from 'react'
+import { PostsContext } from '/pages/posts/index'
 
-export function SearchHints(props) {
-  return (
-    <div>
-      {props.children}
+export function Hints(props) {
+  const {showHintsState } = useContext(PostsContext)
 
+  return ( 
+    <>
+      {showHintsState && <div>{props.children}</div>}
+      
       <style jsx>{`
         div {
           position: absolute;
@@ -18,6 +23,6 @@ export function SearchHints(props) {
           box-shadow: 0 0 10px 2px #0000003d
         }
       `}</style>
-    </div>
+    </>
   )
 }

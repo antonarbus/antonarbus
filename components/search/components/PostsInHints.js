@@ -1,18 +1,20 @@
-import Link from "next/link";
+import Link from "next/link"
+import { useContext } from 'react'
+import { PostsContext } from '/pages/posts/index'
 
-export function FoundPostNames(props) {
+export function PostsInHints(props) {
+  const postsInHintsState = useContext(PostsContext).postsInHintsState
+
   return (
     <>
-      <Link href={'url1'}><a>{'post1'}</a></Link> 
-      <Link href={'url2'}><a>{'post2'}</a></Link> 
-      <Link href={'url3'}><a>{'post3'}</a></Link> 
+      {postsInHintsState.map(post => <Link href={post.url} key={post.title}><a>{post.title}</a></Link> )}
 
       <style jsx>{`
         a {
           display: inline-block;
           position: relative;
           padding: 2px 5px ;
-          margin-left: 5px;
+          margin: 5px;
           border: 1px solid #0083bf;
           border-radius: 3px;
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);

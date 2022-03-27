@@ -1,68 +1,40 @@
 import Head from 'next/head'
-import Link from 'next/link'
-
-import { LinkBox } from '../../components/posts/LinkBox'
 import Search from '/components/search/Search'
 import jsxToStr from '/functions/jsxToStr'
+import { createContext, useState } from "react"
+import { PostLinks } from '/components/posts/PostLinks'
+export const PostsContext = createContext()
 
 export default function Index(props) {
-  console.log(props)
+  // console.log(props)
+  const [searchValState, setSearchValState] = useState('')
+  const [showHintsState, setShowHintsState] = useState(true)
+  const [tagsInHintsState, setTagsInHintsState] = useState([])
+  const [postsInHintsState, setPostsInHintsState] = useState([])
+  const [tagsToSearchState, setTagsToSearchState] = useState([])
+  const [wordsToSearchState, setWordsToSearchState] = useState([])
+
+  const postsContextVal = {
+    posts: props.posts,
+    tags: props.tags,
+    titles: props.titles,
+    searchValState, setSearchValState,
+    showHintsState, setShowHintsState,
+    tagsInHintsState, setTagsInHintsState,
+    postsInHintsState, setPostsInHintsState,
+    tagsToSearchState, setTagsToSearchState,
+    wordsToSearchState, setWordsToSearchState
+  }
   return (
     <>
       <Head>
         <title>Posts list</title>
         <meta name="description" content="Table of content for posts about web dev" />
       </Head>
-
-      <Search />
-
-      <div className="center">
-        <title>Posts</title>
-        {props.posts.map(post => (
-          <LinkBox key={post.title}>
-            <Link href={post.url}><a>{post.title}</a></Link>
-          </LinkBox>
-        ))}
-      </div>
-
-      <style jsx>{`
-        .center {
-          margin: 0 auto;
-          margin-bottom: 20px;
-          margin-top: 100px;
-          max-width: 90vw;
-        }
-        title {
-          display: block;
-          margin: 25px 0px;
-          font-size: 24px;
-          text-align: center;
-          font-weight: 400;
-        }
-        a {
-          color: #0083bf;
-          text-decoration: none;
-          display: inline-block;
-          position: relative;
-          overflow: hidden;
-          vertical-align: bottom;
-        }
-        a::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 17px;
-          background-color: #0083bf;
-          transform: translateX(-100%) translateY(1em);
-        }
-        a:hover::after,
-        a:focus::after {
-          transform: translateX(0%) translateY(1em);
-          transition: transform 300ms;
-        }
-      `}</style>
+      <PostsContext.Provider value={postsContextVal}>
+        <Search />
+        <PostLinks />
+      </PostsContext.Provider>
     </>
   )
 }
@@ -81,7 +53,7 @@ export async function getStaticProps() {
   const imports = pageNames.map(pageName => import(`/pages/posts/${pageName}`))
   const modules = await Promise.all(imports)
   
-  // from 'postObj' variable from all files get data about posts
+  // get data about posts from 'postObj' variable from all files
   const posts = modules.map((module, index) => { 
     return {
       title: jsxToStr(module.postObj.title),
@@ -90,14 +62,19 @@ export async function getStaticProps() {
       path: `/pages/posts/${pageNames[index]}`,
       url: `/posts/${pageNames[index].replace('.js', '')}`,
       tags: module.postObj.tags,
-      bodyText: jsxToStr(module.postObj.body)
+      bodyText: jsxToStr(module.postObj.body),
     }
   })
+  const tags = posts.map(post => post.tags).flat(Infinity)
+  const uniqueTags = [...new Set(tags)].sort((a, b) => a.localeCompare(b))
+  const titles = posts.map(post => post.title).sort((a, b) => a.localeCompare(b))
 
   // pass it into the component as props
   return {
     props: {
-      posts: posts
+      posts: posts,
+      tags: uniqueTags, 
+      titles: titles,
     },
   }
 }

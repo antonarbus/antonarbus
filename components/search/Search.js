@@ -5,11 +5,11 @@ import { BtnSearch } from './components/BtnSearch'
 import { Input } from './components/Input'
 import { InputWrapper } from './components/InputWrapper'
 import { Wrapper } from './components/Wrapper'
-import { TagInsideInput } from './components/TagInsideInput'
-import { SearchHints } from './components/SearchHints'
-import { FoundTags } from './components/FoundTags'
-import { FoundPostNames } from './components/FoundPostNames'
-import { TagsInsideInput } from './components/TagsInsideInput'
+import { TagToSearch } from './components/TagToSearch'
+import { Hints } from './components/Hints'
+import { TagsInHints } from './components/TagsInHints'
+import { PostsInHints } from './components/PostsInHints'
+import { TagsInInput } from './components/TagsInInput'
 
 
 export default function Search() {
@@ -73,15 +73,15 @@ export default function Search() {
     >
       <Wrapper>
         <InputWrapper>
-          <TagsInsideInput />
+          <TagsInInput />
           <Input /> 
           <BtnCancel />
         </InputWrapper>
         <BtnSearch />
-        <SearchHints>
-          <FoundTags />
-          <FoundPostNames />
-        </SearchHints>
+        <Hints>
+          <TagsInHints />
+          <PostsInHints />
+        </Hints>
       </Wrapper>
 
       <style jsx>{`

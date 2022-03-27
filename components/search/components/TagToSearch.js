@@ -1,36 +1,13 @@
-import styled from 'styled-components'
-// import setCaretToEnd from '/functions/setCaretToEnd'
-// import { useDispatch } from 'react-redux'
-// import { store } from '../../../App'
+import { useContext } from 'react'
+import { PostsContext } from '/pages/posts/index'
 
+export function TagToSearch(props) {
 
-export function Tag(props) {
-  // const dispatch = useDispatch()
+  const { tagsToSearchState, setTagsToSearchState } = useContext(PostsContext)
 
   function clickHandler(e) {
-    alert('delete tag')
-    // e.stopPropagation()
-    // // add tag to search input
-    // const inputEl = document.getElementById('input')
-    // const tagEl = e.target
-    // const clonedTag = tagEl.cloneNode(true)
-    // clonedTag.classList.add('tag')
-    // inputEl.appendChild(clonedTag)
-    // inputEl.append('\u00A0')
-    // setCaretToEnd(inputEl)
-    // inputEl.scrollLeft = 10000
-    // window.scroll({ top: 0, left: 0, behavior: 'smooth' })
-
-    // dispatch({
-    //   type: 'remove tags input val',
-    //   foundPosts: store.getState().foundPosts,
-    // })
-
-    // dispatch({
-    //   type: 'filter tags',
-    //   tagsInputVal: store.getState().tagsInputVal,
-    //   tagsFromFoundPosts: store.getState().tagsFromFoundPosts,
-    // })
+    const tags = tagsToSearchState.filter(tag => tag !== props.tag)
+    setTagsToSearchState(tags)
   }
 
   return (
@@ -58,12 +35,13 @@ export function Tag(props) {
         }
         .tag:after {
           display: none;
-          content: 'add';
+          content: '✕';
           position: absolute;
           top: 50%; 
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 10px;
+          font-size: 16px;
+          color: rgb(251, 122, 122);
         }
         .tag:hover.tag:after {
           display: block;

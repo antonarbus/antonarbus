@@ -1,8 +1,46 @@
+import { useContext } from "react"
+import { PostsContext } from '/pages/posts/index'
+
 export function Input() {
+  const {
+    setSearchValState,
+    searchValState,
+    tags,
+    setTagsInHintsState,
+    posts,
+    setPostsInHintsState,
+    setShowHintsState,
+  } = useContext(PostsContext)
+  
+
+  function tagsForHints(e) {
+    const inputVal = e.target.value
+    if(!inputVal.trim()) return setTagsInHintsState([])
+    const foundTags = tags.filter(tag => tag.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
+    setTagsInHintsState(foundTags)
+    foundTags.length && setShowHintsState(true)
+  }
+
+  function postsForHints(e) {
+    const inputVal = e.target.value
+    if(!inputVal.trim()) return setPostsInHintsState([])
+    const foundPosts = posts.filter(post => post.title.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
+    setPostsInHintsState(foundPosts)
+    foundPosts.length && setShowHintsState(true)
+    !foundPosts.length && setShowHintsState(false)
+  }
+  
+  function inputHandler(e) {
+    const inputVal = e.target.value
+    setSearchValState(inputVal)
+    !inputVal.trim() && setShowHintsState(false)
+    tagsForHints(e)
+    postsForHints(e)
+  }
 
   return (
     <>
-      <input placeholder='Search'/>
+      <input placeholder='Search' value={searchValState} onChange={inputHandler} />
       
       <style jsx>{`
         input {
