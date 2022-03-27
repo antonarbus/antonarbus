@@ -8,11 +8,13 @@ export const PostsContext = createContext()
 export default function Index(props) {
   // console.log(props)
   const [searchValState, setSearchValState] = useState('')
-  const [showHintsState, setShowHintsState] = useState(true)
+  const [showHintsState, setShowHintsState] = useState(false)
   const [tagsInHintsState, setTagsInHintsState] = useState([])
   const [postsInHintsState, setPostsInHintsState] = useState([])
-  const [tagsToSearchState, setTagsToSearchState] = useState([])
-  const [wordsToSearchState, setWordsToSearchState] = useState([])
+  const [itemsInInput, setItemsInInput] = useState([
+    {word: true, tag: false, val: 'value'},
+    {word: false, tag: true, val: 'tag'},
+  ])
 
   const postsContextVal = {
     posts: props.posts,
@@ -22,8 +24,7 @@ export default function Index(props) {
     showHintsState, setShowHintsState,
     tagsInHintsState, setTagsInHintsState,
     postsInHintsState, setPostsInHintsState,
-    tagsToSearchState, setTagsToSearchState,
-    wordsToSearchState, setWordsToSearchState
+    itemsInInput, setItemsInInput,
   }
   return (
     <>

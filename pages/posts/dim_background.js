@@ -25,10 +25,7 @@ export const postObj = {
   body: (
     <>
       <p>Several background images separated by comma can be applied.</p>
-      <p>
-        There is a CSS trick how we can dim an image putting a bit transparent gradient without
-        gradient in front.
-      </p>
+      <p> There is a CSS trick how we can dim an image putting a bit transparent gradient without gradient in front. </p>
 
       <div>
         <style jsx>{`

@@ -18,7 +18,6 @@ export function Input() {
     if(!inputVal.trim()) return setTagsInHintsState([])
     const foundTags = tags.filter(tag => tag.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
     setTagsInHintsState(foundTags)
-    foundTags.length && setShowHintsState(true)
   }
 
   function postsForHints(e) {
@@ -26,14 +25,11 @@ export function Input() {
     if(!inputVal.trim()) return setPostsInHintsState([])
     const foundPosts = posts.filter(post => post.title.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
     setPostsInHintsState(foundPosts)
-    foundPosts.length && setShowHintsState(true)
-    !foundPosts.length && setShowHintsState(false)
   }
   
   function inputHandler(e) {
     const inputVal = e.target.value
     setSearchValState(inputVal)
-    !inputVal.trim() && setShowHintsState(false)
     tagsForHints(e)
     postsForHints(e)
   }

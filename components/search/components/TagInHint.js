@@ -2,12 +2,24 @@ import { useContext } from 'react'
 import { PostsContext } from '/pages/posts/index'
 
 export function TagInHint(props) {
-  const { tagsToSearchState, setTagsToSearchState } = useContext(PostsContext)
+  const {
+    setSearchValState,
+    setShowHintsState,
+    setTagsInHintsState,
+    setPostsInHintsState,
+    itemsInInput,
+    setItemsInInput,
+  } = useContext(PostsContext)
 
   function clickHandler() {
-    const tagsToSearch = [...tagsToSearchState, props.tag]
-    const uniqueTags = [...new Set(tagsToSearch)]
-    setTagsToSearchState(uniqueTags)
+    const isItemAlreadyIncluded = itemsInInput.some(item => item.tag === true && item.val === props.tag)
+    if (isItemAlreadyIncluded) return
+    const newTag = {val: props.tag, tag: true, text: false}
+    setItemsInInput([...itemsInInput, newTag])
+    setSearchValState('')
+    setTagsInHintsState([])
+    setPostsInHintsState([])
+    setShowHintsState(false)
   }
 
   return (

@@ -7,13 +7,19 @@ export function PostsInHints(props) {
 
   return (
     <>
-      {postsInHintsState.map(post => <Link href={post.url} key={post.title}><a>{post.title}</a></Link> )}
+      {postsInHintsState.map(post => (
+        <Link href={post.url} key={post.title}>
+          <a>
+            <span>{post.title}</span>
+          </a>
+        </Link>
+      ))}
 
       <style jsx>{`
         a {
           display: inline-block;
           position: relative;
-          padding: 2px 5px ;
+          padding: 2px 5px;
           margin: 5px;
           border: 1px solid #0083bf;
           border-radius: 3px;
@@ -27,6 +33,22 @@ export function PostsInHints(props) {
           cursor: pointer;
           vertical-align: middle;
           user-select: none;
+        }
+        a:after {
+          display: none;
+          content: 'open';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 10px;
+        }
+        a:hover:after {
+          display: block;
+        }
+
+        a:hover > * {
+          visibility: hidden;
         }
       `}</style>
     </>

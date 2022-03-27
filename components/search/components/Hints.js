@@ -3,11 +3,11 @@ import { useContext } from 'react'
 import { PostsContext } from '/pages/posts/index'
 
 export function Hints(props) {
-  const {showHintsState } = useContext(PostsContext)
+  const { tagsInHintsState, postsInHintsState } = useContext(PostsContext)
 
   return ( 
     <>
-      {showHintsState && <div>{props.children}</div>}
+      {(!!tagsInHintsState.length || !!postsInHintsState.length) && <div>{props.children}</div>}
       
       <style jsx>{`
         div {

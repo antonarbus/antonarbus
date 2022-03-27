@@ -1,5 +1,5 @@
 
-export function WordToSearch(props) {
+export function WordInInput(props) {
 
   function clickHandler(e) {
     alert('delete word')

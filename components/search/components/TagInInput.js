@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 import { PostsContext } from '/pages/posts/index'
 
-export function TagToSearch(props) {
+export function TagInInput(props) {
 
-  const { tagsToSearchState, setTagsToSearchState } = useContext(PostsContext)
+  const { itemsInInput, setItemsInInput } = useContext(PostsContext)
 
   function clickHandler(e) {
-    const tags = tagsToSearchState.filter(tag => tag !== props.tag)
-    setTagsToSearchState(tags)
+    const tags = itemsInInput.filter(item => item.val !== props.tag && item.tag === true)
+    setItemsInInput(tags)
   }
 
   return (
