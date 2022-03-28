@@ -9,7 +9,8 @@ export function Input() {
     setTagsInHintsState,
     posts,
     setPostsInHintsState,
-    setShowHintsState,
+    itemsInInput, 
+    setItemsInInput
   } = useContext(PostsContext)
   
 
@@ -27,17 +28,31 @@ export function Input() {
     setPostsInHintsState(foundPosts)
   }
   
-  function inputHandler(e) {
+  function onChangeHandler(e) {
     const inputVal = e.target.value
     setSearchValState(inputVal)
     tagsForHints(e)
     postsForHints(e)
   }
 
+  function onKeyDownHandler(e) {
+    const inputVal = e.target.value
+    if (e.code === "Backspace") {
+      if (inputVal.length !== 0) return 
+      itemsInInput.pop()
+      setItemsInInput([...itemsInInput])
+    }
+  }
+
   return (
     <>
-      <input placeholder='Search' value={searchValState} onChange={inputHandler} />
-      
+      <input
+        placeholder="Search"
+        value={searchValState}
+        onKeyDown={onKeyDownHandler}
+        onChange={onChangeHandler}
+      />
+
       <style jsx>{`
         input {
           font-size: 20px;
@@ -52,7 +67,8 @@ export function Input() {
           min-width: 100px;
         }
         input::placeholder {
-          font-family: "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+          font-family: 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+            'Droid Sans', 'Helvetica Neue', sans-sans;
           font-weight: 100;
         }
       `}</style>

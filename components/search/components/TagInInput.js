@@ -6,7 +6,7 @@ export function TagInInput(props) {
   const { itemsInInput, setItemsInInput } = useContext(PostsContext)
 
   function clickHandler(e) {
-    const tags = itemsInInput.filter(item => item.val !== props.tag && item.tag === true)
+    const tags = itemsInInput.filter(item => !(item.val === props.tag && item.tag === true))
     setItemsInInput(tags)
   }
 
