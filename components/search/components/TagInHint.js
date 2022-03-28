@@ -8,7 +8,7 @@ export function TagInHint(props) {
     setItemsInInput,
   } = useContext(PostsContext)
 
-  function clickHandler() {
+  function tagsForInput() {
     const isItemAlreadyIncluded = itemsInInput.some(item => item.tag === true && item.val === props.tag)
     if (isItemAlreadyIncluded) return
     const newTag = {val: props.tag, tag: true, text: false}
@@ -17,7 +17,7 @@ export function TagInHint(props) {
   }
 
   return (
-    <div className='tag' onClick={clickHandler}>
+    <div className='tag' onClick={tagsForInput}>
       <span className='tagText'>{props.tag}</span>
       <span className='deleteTag'></span>
       

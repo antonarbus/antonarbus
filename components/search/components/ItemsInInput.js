@@ -10,7 +10,7 @@ export function ItemsInInput(props) {
     <>
       {itemsInInput.map(item => {
         if(item.tag) return <TagInInput key={item.val} tag={item.val} />
-        if(item.word) return <WordInInput key={item.val}  word={item.val} />
+        if(item.word) return <WordInInput key={item.val} word={item.val} />
       })}
     </>
   )

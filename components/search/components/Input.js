@@ -28,12 +28,24 @@ export function Input() {
     const foundPosts = posts.filter(post => post.title.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
     setPostsInHintsState(foundPosts)
   }
+
+  function wordsForInput(e) {
+    const inputVal = e.target.value
+    if (!inputVal.endsWith('  ')) return 
+    console.log(666)
+    const isItemAlreadyIncluded = itemsInInput.some(item => item.word === true && item.val === inputVal)
+    if (isItemAlreadyIncluded) return
+    const newWord = {val: inputVal.trim(), tag: false, text: true}
+    setItemsInInput([...itemsInInput, newWord])
+    setSearchValState('')
+  }
   
   function onChangeHandler(e) {
     const inputVal = e.target.value
     setSearchValState(inputVal)
     tagsForHints(e)
     postsForHints(e)
+    wordsForInput(e)
   }
 
   function onKeyDownHandler(e) {
