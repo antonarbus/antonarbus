@@ -1,13 +1,19 @@
+import { useContext } from 'react'
+import { PostsContext } from '/pages/posts/index'
 
 export function WordInInput(props) {
 
-  function clickHandler(e) {
-    alert('delete word')
+  const { itemsInInput, setItemsInInput, inputRef } = useContext(PostsContext)
+
+  function removeWord(e) {
+    const words = itemsInInput.filter(item => !(item.val === props.text && item.text === true))
+    setItemsInInput(words)
+    inputRef.current.focus()
   }
 
   return (
-    <div className='word' onClick={clickHandler}>
-      <span className='wordText'>{props.word}</span>
+    <div className='word' onClick={removeWord}>
+      <span className='wordText'>{props.text}</span>
       <span className='deleteWord'></span>
       
       <style jsx>{`
@@ -27,6 +33,7 @@ export function WordInInput(props) {
           cursor: pointer;
           vertical-align: middle;
           user-select: none;
+          white-space: nowrap;
         }
         .word:after {
           display: none;

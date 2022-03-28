@@ -3,15 +3,16 @@ import { PostsContext } from '/pages/posts/index'
 
 export function TagInInput(props) {
 
-  const { itemsInInput, setItemsInInput } = useContext(PostsContext)
+  const { itemsInInput, setItemsInInput, inputRef } = useContext(PostsContext)
 
-  function clickHandler(e) {
+  function removeTag(e) {
     const tags = itemsInInput.filter(item => !(item.val === props.tag && item.tag === true))
     setItemsInInput(tags)
+    inputRef.current.focus()
   }
 
   return (
-    <div className='tag' onClick={clickHandler}>
+    <div className='tag' onClick={removeTag}>
       <span className='tagText'>{props.tag}</span>
       <span className='deleteTag'></span>
       

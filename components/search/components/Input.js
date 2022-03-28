@@ -15,25 +15,27 @@ export function Input() {
     inputRef,
   } = useContext(PostsContext)
 
-  function tagsForHints(e) {
+  function tagsAndPostsForHints(e) {
     const inputVal = e.target.value
-    if(!inputVal.trim()) return setTagsInHintsState(tags)
+    setShowHintsState(true)
+    if(!inputVal.trim()) {
+      setTagsInHintsState(tags)
+      setPostsInHintsState(posts)
+    }
     const foundTags = tags.filter(tag => tag.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
-    setTagsInHintsState(foundTags)
-  }
-
-  function postsForHints(e) {
-    const inputVal = e.target.value
-    if(!inputVal.trim()) return setPostsInHintsState(posts)
     const foundPosts = posts.filter(post => post.title.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
+    if(foundTags.length === 0 && foundPosts.length === 0) {
+      setShowHintsState(false)
+      return 
+    }
+    setTagsInHintsState(foundTags)
     setPostsInHintsState(foundPosts)
   }
 
   function wordsForInput(e) {
     const inputVal = e.target.value
     if (!inputVal.endsWith('  ')) return 
-    console.log(666)
-    const isItemAlreadyIncluded = itemsInInput.some(item => item.word === true && item.val === inputVal)
+    const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === inputVal.trim())
     if (isItemAlreadyIncluded) return
     const newWord = {val: inputVal.trim(), tag: false, text: true}
     setItemsInInput([...itemsInInput, newWord])
@@ -43,8 +45,7 @@ export function Input() {
   function onChangeHandler(e) {
     const inputVal = e.target.value
     setSearchValState(inputVal)
-    tagsForHints(e)
-    postsForHints(e)
+    tagsAndPostsForHints(e)
     wordsForInput(e)
   }
 

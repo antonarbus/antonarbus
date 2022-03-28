@@ -12,8 +12,8 @@ export default function Index(props) {
   const [tagsInHintsState, setTagsInHintsState] = useState(props.tags)
   const [postsInHintsState, setPostsInHintsState] = useState(props.posts)
   const [itemsInInput, setItemsInInput] = useState([
-    {word: true, tag: false, val: 'value'},
-    {word: false, tag: true, val: 'tag'},
+    // {word: true, tag: false, val: 'value'},
+    // {word: false, tag: true, val: 'tag'},
   ])
   const hintsRef = useRef()
   const inputRef = useRef()

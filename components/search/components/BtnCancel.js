@@ -1,17 +1,17 @@
-
-import Mark from 'mark.js'
+import { useContext } from 'react'
+import { PostsContext } from '/pages/posts/index'
 
 export function BtnCancel() {
+  const { setItemsInInput, inputRef } = useContext(PostsContext)
+
+  function removeInputContent() {
+    setItemsInInput([])
+    inputRef.current.focus()
+  }
+
   return (
     <>
-      <button
-        onClick={e => {
-          // remove highlight
-          // const context = document.querySelector('main')
-          // const instance = new Mark(context)
-          // instance.unmark()
-        }}
-      />
+      <button onClick={removeInputContent} />
 
       <style jsx>{`
         button {
