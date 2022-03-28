@@ -4,9 +4,6 @@ import { PostsContext } from '/pages/posts/index'
 export function TagInHint(props) {
   const {
     setSearchValState,
-    setShowHintsState,
-    setTagsInHintsState,
-    setPostsInHintsState,
     itemsInInput,
     setItemsInInput,
   } = useContext(PostsContext)
@@ -17,9 +14,6 @@ export function TagInHint(props) {
     const newTag = {val: props.tag, tag: true, text: false}
     setItemsInInput([...itemsInInput, newTag])
     setSearchValState('')
-    setTagsInHintsState([])
-    setPostsInHintsState([])
-    setShowHintsState(false)
   }
 
   return (

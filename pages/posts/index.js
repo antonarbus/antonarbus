@@ -1,20 +1,22 @@
 import Head from 'next/head'
 import Search from '/components/search/Search'
 import jsxToStr from '/functions/jsxToStr'
-import { createContext, useState } from "react"
+import { createContext, useState, useRef } from "react"
 import { PostLinks } from '/components/posts/PostLinks'
 export const PostsContext = createContext()
 
 export default function Index(props) {
   // console.log(props)
   const [searchValState, setSearchValState] = useState('')
-  const [showHintsState, setShowHintsState] = useState(false)
-  const [tagsInHintsState, setTagsInHintsState] = useState([])
-  const [postsInHintsState, setPostsInHintsState] = useState([])
+  const [showHintsState, setShowHintsState] = useState(true)
+  const [tagsInHintsState, setTagsInHintsState] = useState(props.tags)
+  const [postsInHintsState, setPostsInHintsState] = useState(props.posts)
   const [itemsInInput, setItemsInInput] = useState([
     {word: true, tag: false, val: 'value'},
     {word: false, tag: true, val: 'tag'},
   ])
+  const hintsRef = useRef()
+  const inputRef = useRef()
 
   const postsContextVal = {
     posts: props.posts,
@@ -25,6 +27,8 @@ export default function Index(props) {
     tagsInHintsState, setTagsInHintsState,
     postsInHintsState, setPostsInHintsState,
     itemsInInput, setItemsInInput,
+    hintsRef,
+    inputRef
   }
   return (
     <>
@@ -47,7 +51,7 @@ export async function getStaticProps() {
   const folder = './pages/posts/'
   const fileNames = fs.readdirSync(folder)
   const pageNames = fileNames.filter(
-    fileName => fileName.includes('.js') && fileName !== '_xxx.js' && fileName !== 'index.js',
+    fileName => fileName.includes('.js') && fileName !== '_xxx.js' && fileName !== 'index.js' && !fileName.startsWith('private'),
   )
 
   // import all variables from files

@@ -10,20 +10,21 @@ export function Input() {
     posts,
     setPostsInHintsState,
     itemsInInput, 
-    setItemsInInput
+    setItemsInInput,
+    setShowHintsState,
+    inputRef,
   } = useContext(PostsContext)
-  
 
   function tagsForHints(e) {
     const inputVal = e.target.value
-    if(!inputVal.trim()) return setTagsInHintsState([])
+    if(!inputVal.trim()) return setTagsInHintsState(tags)
     const foundTags = tags.filter(tag => tag.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
     setTagsInHintsState(foundTags)
   }
 
   function postsForHints(e) {
     const inputVal = e.target.value
-    if(!inputVal.trim()) return setPostsInHintsState([])
+    if(!inputVal.trim()) return setPostsInHintsState(posts)
     const foundPosts = posts.filter(post => post.title.toLowerCase().trim().includes(inputVal.toLowerCase().trim()))
     setPostsInHintsState(foundPosts)
   }
@@ -44,11 +45,19 @@ export function Input() {
     }
   }
 
+  function onFocusHandler(e) {
+    setTagsInHintsState(tags)
+    setPostsInHintsState(posts)
+    setShowHintsState(true)
+  }
+
   return (
     <>
       <input
+        ref={inputRef}
         placeholder="Search"
         value={searchValState}
+        onFocus={onFocusHandler}
         onKeyDown={onKeyDownHandler}
         onChange={onChangeHandler}
       />
