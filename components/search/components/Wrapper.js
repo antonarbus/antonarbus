@@ -8,7 +8,6 @@ export function Wrapper(props) {
           display: flex;
           justify-content: center;
           align-items: center;
-          /* border: 1px dotted grey; */
           padding: 5px;
           min-width: 100%;
           height: 60px;

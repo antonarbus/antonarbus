@@ -13,6 +13,8 @@ export function Input() {
     setItemsInInput,
     setShowHintsState,
     inputRef,
+    btnCancelRef,
+    searchBtnRef,
   } = useContext(PostsContext)
 
   function tagsAndPostsForHints(e) {
@@ -56,6 +58,14 @@ export function Input() {
       if (inputVal.length !== 0) return 
       itemsInInput.pop()
       setItemsInInput([...itemsInInput])
+    }
+    if (e.code === "Escape") {
+      console.log("Escape")
+      btnCancelRef.current.click()
+    }
+    if (e.code === "Enter") {
+      console.log("Enter")
+      searchBtnRef.current.click()
     }
   }
 

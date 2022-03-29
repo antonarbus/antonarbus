@@ -8,50 +8,35 @@ export function BtnSearch() {
     inputValState,
     itemsInInput, 
     setItemsInInput,
-    foundPostsState, setFoundPostsState,
+    setFoundPostsState,
+    searchBtnRef
   } = useContext(PostsContext)
 
-  
-
   function search() {
-    console.log(666)
     let newItemsInInput = [...itemsInInput];
 
-    (function addTextIntoInputItem() {
-      const text = inputValState.trim()
-      if (!text) return
-      // add input value text into the 
-      const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === text)
-      if (isItemAlreadyIncluded) return
-      const newItem = {val: text, tag: false, text: true}
-      newItemsInInput = [...itemsInInput, newItem]
-      setItemsInInput(newItemsInInput)
-      setInputValState('')
-    })()
-  
-    const tagsToSearch = newItemsInInput
-      .filter(item => item.tag)
-      .map(item => item.val)
-    
-    const textsToSearch = newItemsInInput
-      .filter(item => item.text)
-      .map(item => item.val) 
-    
+    // addTextIntoInputItem
+    const text = inputValState.trim()
+    if (!text) return
+    // add input value text into the 
+    const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === text)
+    if (isItemAlreadyIncluded) return
+    const newItem = {val: text, tag: false, text: true}
+    newItemsInInput = [...itemsInInput, newItem]
+    setItemsInInput(newItemsInInput)
+    setInputValState('')
+
+    // filter posts and show on screen
+    const tagsToSearch = newItemsInInput.filter(item => item.tag).map(item => item.val)
+    const textsToSearch = newItemsInInput.filter(item => item.text).map(item => item.val) 
     const foundPosts = posts
-    .filter(post => {
-      return tagsToSearch.every(tagToSearch => post.tags.includes(tagToSearch))
-    })
-    .filter(post => {
-      return textsToSearch.every(textToSearch => post.bodyText.includes(textToSearch))
-    })
-
+      .filter(post => tagsToSearch.every(tagToSearch => post.tags.includes(tagToSearch)))
+      .filter(post => textsToSearch.every(textToSearch => post.bodyText.includes(textToSearch)))
     setFoundPostsState(foundPosts)
-
-
   }
 
   return (
-    <button onClick={search}>
+    <button onClick={search} ref={searchBtnRef}>
       Search
 
       <style jsx>{`

@@ -15,19 +15,23 @@ console.log(props)
   const [itemsInInput, setItemsInInput] = useState([])
   const hintsRef = useRef()
   const inputRef = useRef()
+  const btnCancelRef = useRef()
+  const searchBtnRef = useRef()
 
   const postsContextVal = {
     posts: props.posts,
     tags: props.tags,
     titles: props.titles,
-    foundPostsState, setFoundPostsState,
     inputValState, setInputValState,
+    foundPostsState, setFoundPostsState,
     showHintsState, setShowHintsState,
     tagsInHintsState, setTagsInHintsState,
     postsInHintsState, setPostsInHintsState,
     itemsInInput, setItemsInInput,
     hintsRef,
-    inputRef
+    inputRef,
+    btnCancelRef,
+    searchBtnRef,
   }
   return (
     <>
