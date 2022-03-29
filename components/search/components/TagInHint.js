@@ -3,21 +3,23 @@ import { PostsContext } from '/pages/posts/index'
 
 export function TagInHint(props) {
   const {
-    setSearchValState,
+    setInputValState,
     itemsInInput,
     setItemsInInput,
+    inputRef
   } = useContext(PostsContext)
 
-  function tagsForInput() {
+  function insertTagInInput() {
     const isItemAlreadyIncluded = itemsInInput.some(item => item.tag === true && item.val === props.tag)
+    inputRef.current.focus()
     if (isItemAlreadyIncluded) return
     const newTag = {val: props.tag, tag: true, text: false}
     setItemsInInput([...itemsInInput, newTag])
-    setSearchValState('')
+    setInputValState('')
   }
 
   return (
-    <div className='tag' onClick={tagsForInput}>
+    <div className='tag' onClick={insertTagInInput}>
       <span className='tagText'>{props.tag}</span>
       <span className='deleteTag'></span>
       

@@ -2,11 +2,12 @@ import { useContext } from 'react'
 import { PostsContext } from '/pages/posts/index'
 
 export function BtnCancel() {
-  const { setItemsInInput, inputRef } = useContext(PostsContext)
+  const { setItemsInInput, inputRef, setFoundPostsState, posts } = useContext(PostsContext)
 
   function removeInputContent() {
     setItemsInInput([])
     inputRef.current.focus()
+    setFoundPostsState(posts)
   }
 
   return (

@@ -3,8 +3,8 @@ import { PostsContext } from '/pages/posts/index'
 
 export function Input() {
   const {
-    setSearchValState,
-    searchValState,
+    setInputValState,
+    inputValState,
     tags,
     setTagsInHintsState,
     posts,
@@ -34,17 +34,18 @@ export function Input() {
 
   function wordsForInput(e) {
     const inputVal = e.target.value
-    if (!inputVal.endsWith('  ')) return 
-    const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === inputVal.trim())
+    if (!inputVal.endsWith(' ')) return 
+    const text = inputVal.trim().replaceAll('+', ' ')
+    const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === text)
     if (isItemAlreadyIncluded) return
-    const newWord = {val: inputVal.trim(), tag: false, text: true}
-    setItemsInInput([...itemsInInput, newWord])
-    setSearchValState('')
+    const newItem = {val: text, tag: false, text: true}
+    setItemsInInput([...itemsInInput, newItem])
+    setInputValState('')
   }
   
   function onChangeHandler(e) {
     const inputVal = e.target.value
-    setSearchValState(inputVal)
+    setInputValState(inputVal)
     tagsAndPostsForHints(e)
     wordsForInput(e)
   }
@@ -69,7 +70,7 @@ export function Input() {
       <input
         ref={inputRef}
         placeholder="Search"
-        value={searchValState}
+        value={inputValState}
         onFocus={onFocusHandler}
         onKeyDown={onKeyDownHandler}
         onChange={onChangeHandler}

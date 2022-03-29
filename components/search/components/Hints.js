@@ -19,7 +19,6 @@ export function Hints(props) {
   }
   
   useEffect(() => {
-    console.log('hi')
     document.addEventListener('click', onClickHandler)
     return () => { document.removeEventListener('click', onClickHandler) }
   }, [])

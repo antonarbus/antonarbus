@@ -4,16 +4,18 @@ import { LinkBox } from "./LinkBox";
 import { PostsContext } from '/pages/posts/index'
 
 export function PostLinks(props) {
-  const postsContext = useContext(PostsContext)
+  const {foundPostsState} = useContext(PostsContext)
   return (
     <>
       <div className="center">
         <title>Posts</title>
-        {postsContext.posts.map(post => (
-          <LinkBox key={post.title}>
-            <Link href={post.url}><a>{post.title}</a></Link>
-          </LinkBox>
-        ))}
+        <div className="container">
+          {foundPostsState.map(post => (
+            <LinkBox key={post.title}>
+              <Link href={post.url}><a>{post.title}</a></Link>
+            </LinkBox>
+          ))}
+        </div>
       </div>
 
       <style jsx>{`
@@ -22,6 +24,12 @@ export function PostLinks(props) {
           margin-bottom: 20px;
           margin-top: 100px;
           max-width: 90vw;
+        }
+        .container {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+
         }
         title {
           display: block;

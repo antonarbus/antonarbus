@@ -6,15 +6,13 @@ import { PostLinks } from '/components/posts/PostLinks'
 export const PostsContext = createContext()
 
 export default function Index(props) {
-  // console.log(props)
-  const [searchValState, setSearchValState] = useState('')
-  const [showHintsState, setShowHintsState] = useState(true)
+console.log(props)
+  const [foundPostsState, setFoundPostsState] = useState(props.posts)
+  const [inputValState, setInputValState] = useState('')
+  const [showHintsState, setShowHintsState] = useState(false)
   const [tagsInHintsState, setTagsInHintsState] = useState(props.tags)
   const [postsInHintsState, setPostsInHintsState] = useState(props.posts)
-  const [itemsInInput, setItemsInInput] = useState([
-    // {word: true, tag: false, val: 'value'},
-    // {word: false, tag: true, val: 'tag'},
-  ])
+  const [itemsInInput, setItemsInInput] = useState([])
   const hintsRef = useRef()
   const inputRef = useRef()
 
@@ -22,7 +20,8 @@ export default function Index(props) {
     posts: props.posts,
     tags: props.tags,
     titles: props.titles,
-    searchValState, setSearchValState,
+    foundPostsState, setFoundPostsState,
+    inputValState, setInputValState,
     showHintsState, setShowHintsState,
     tagsInHintsState, setTagsInHintsState,
     postsInHintsState, setPostsInHintsState,
