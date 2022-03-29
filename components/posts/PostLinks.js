@@ -20,16 +20,16 @@ export function PostLinks(props) {
 
       <style jsx>{`
         .center {
-          margin: 0 auto;
-          margin-bottom: 20px;
-          margin-top: 100px;
-          max-width: 90vw;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 82px;
         }
         .container {
           display: flex;
           justify-content: center;
           align-items: flex-start;
-
+          flex-wrap: wrap;
         }
         title {
           display: block;
