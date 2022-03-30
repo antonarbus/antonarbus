@@ -8,7 +8,6 @@ import { TagsInHints } from './components/TagsInHints'
 import { PostsInHints } from './components/PostsInHints'
 import { ItemsInInput } from './components/ItemsInInput'
 
-
 export default function Search() {
 
   return (

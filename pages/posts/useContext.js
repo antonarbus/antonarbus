@@ -160,9 +160,9 @@ export const postObj = {
       <ul>
         <li>In a project we may have many components and use one inside another ones</li>
         <li>Data should be passed between them, for example we want to...</li>
-        <li>Pass <code>'John'</code> through all components tree from A to D in props</li>
+        <li>Pass <code>'John'</code> through all components tree from A to D in props, which creates “prop drilling” issue</li>
         <li>We have to do it in all components and if we have many variables it may produce a mess in code</li>
-        <li>Let's pass the age of John <code>37</code> the smarter way</li>
+        <li>Let's pass the age of John <code>37</code> a smarter way</li>
         <li>Create <code>Context</code> variable outside components with <CodeSpan>{'Context = createContext()'}</CodeSpan></li>
         <li>Wrap components in <CodeSpan>{'<Context.Provider value={{age: 37}}>'}</CodeSpan></li>
         <li>Passed value <code>{'{age: 37}'}</code> will be available in all components inside.</li>
