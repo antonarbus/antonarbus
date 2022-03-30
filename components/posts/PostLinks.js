@@ -4,11 +4,11 @@ import { LinkBox } from "./LinkBox";
 import { PostsContext } from '/pages/posts/index'
 
 export function PostLinks(props) {
-  const {foundPostsState} = useContext(PostsContext)
+  const { foundPostsState } = useContext(PostsContext)
   return (
     <>
       <div className="center">
-        <title>Posts</title>
+        <title>{foundPostsState.length ? foundPostsState.length + ' posts' : 'Not found'}</title>
         <div className="container">
           {foundPostsState.map(post => (
             <LinkBox key={post.title}>

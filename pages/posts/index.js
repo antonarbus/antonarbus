@@ -6,7 +6,7 @@ import { PostLinks } from '/components/posts/PostLinks'
 export const PostsContext = createContext()
 
 export default function Index(props) {
-console.log(props)
+  console.log(props)
   const [foundPostsState, setFoundPostsState] = useState(props.posts)
   const [inputValState, setInputValState] = useState('')
   const [showHintsState, setShowHintsState] = useState(false)

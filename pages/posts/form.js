@@ -19,12 +19,11 @@ function On_submit(props) {
   )
 }
 
-
 export const postObj = {
-  title: 'onSubmit',
+  title: 'form',
   date: '2022.03.29',
   tags: ['html'],
-  description: 'yyy',
+  description: 'form in html',
   body: (
     <>
       <p>To use enter to hit a 'submit' button we need to create a form and use from's "onSubmit" event handler.</p>

@@ -6,10 +6,10 @@ export default function index() {
 }
 
 export const postObj = {
-  title: 'pass useRef in props',
+  title: 'useRef',
   date: '2022.03.28',
   tags: ['react', 'hook'],
-  description: 'pass useRef in props',
+  description: 'useRef hook',
   body: (
     <>
       <p><CodeSpan>useRef()</CodeSpan> can be passed in props, like any other variable</p>  

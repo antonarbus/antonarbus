@@ -16,15 +16,17 @@ export function BtnSearch() {
     let newItemsInInput = [...itemsInInput];
 
     // addTextIntoInputItem
-    const text = inputValState.trim()
-    if (!text) return
-    // add input value text into the 
-    const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === text)
-    if (isItemAlreadyIncluded) return
-    const newItem = {val: text, tag: false, text: true}
-    newItemsInInput = [...itemsInInput, newItem]
-    setItemsInInput(newItemsInInput)
-    setInputValState('')
+    (() => {
+      const text = inputValState.trim()
+      if (!text) return
+      // add input value text into the 
+      const isItemAlreadyIncluded = itemsInInput.some(item => item.text === true && item.val === text)
+      if (isItemAlreadyIncluded) return
+      const newItem = {val: text, tag: false, text: true}
+      newItemsInInput = [...itemsInInput, newItem]
+      setItemsInInput(newItemsInInput)
+      setInputValState('')
+    })();
 
     // filter posts and show on screen
     const tagsToSearch = newItemsInInput.filter(item => item.tag).map(item => item.val)
