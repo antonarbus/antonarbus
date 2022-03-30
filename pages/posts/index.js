@@ -33,7 +33,7 @@ export default function Index(props) {
     btnCancelRef,
     searchBtnRef,
   }
-  
+
   return (
     <>
       <Head>
@@ -55,7 +55,10 @@ export async function getStaticProps() {
   const folder = './pages/posts/'
   const fileNames = fs.readdirSync(folder)
   const pageNames = fileNames.filter(
-    fileName => fileName.includes('.js') && fileName !== '_xxx.js' && fileName !== 'index.js' && !fileName.startsWith('private'),
+    fileName =>
+      fileName.includes('.js') &&
+      fileName !== 'index.js' &&
+      !fileName.startsWith('_'),
   )
 
   // import all variables from files
