@@ -131,61 +131,6 @@ function SetStateWithPreviousValue() {
 }
 // #endregion
 
-// #region parent & children render
-function blink(el) {
-  el.style.borderColor = 'DeepPink'
-  setTimeout(() => { el.style.borderColor = 'LightGrey' }, 500)
-}
-
-function MyParent(props) {
-  const [state, setState] = useState(0)
-  const ref = useRef()
-  const updateState = () => setState(state + 1)
-
-  ref.current && blink(ref.current)
-  return (
-    <div style={style} ref={ref}>
-      <h3>Parent</h3>
-      <button onClick={updateState}>Add +1</button>
-      <div>Value: <b>{state}</b></div>
-      <MyChild text={'Child'}/>
-      <MyChildWithoutStateInJSX />
-      {props.children}
-    </div>
-  )
-}
-
-function MyChild(props) {
-  const [state, setState] = useState(0)
-  const updateState = () => setState(state + 1)
-  const ref = useRef()
-
-  ref.current && blink(ref.current)
-  return (
-    <div style={style} ref={ref}>
-      <h3>{props.text}</h3>
-      <div>Value: <b>{state}</b></div>
-      <button onClick={updateState}>Add +1</button>
-    </div>
-  )
-}
-
-function MyChildWithoutStateInJSX() {
-  const [state, setState] = useState(0)
-  const updateState = () => setState(state + 1)
-  const ref = useRef()
-
-  ref.current && blink(ref.current)
-  return (
-    <div style={style} ref={ref}>
-      <h3>Child w/o state on screen</h3>
-      <div>No state on screen</div>
-      <button onClick={updateState}>Add +1</button>
-    </div>
-  )
-}
-// #endregion
-
 export const postObj = {
   title: 'useState',
   date: '2021.09.25',
@@ -364,7 +309,7 @@ export const postObj = {
       <H5>Async nature of <CodeSpan>setState()</CodeSpan></H5>
       
       <p>For example we increment the state 5 times with <CodeSpan>{'for (let i = 0; i < 5; i++) setState(state + 1)'}</CodeSpan> </p>
-      <p>5 calls go into the end of <i>microtask queue</i> remembering current state value <code>currentValue = 0</code>. When they are executed in future they will return same <code>currentValue + 1 = 1</code></p>
+      <p>5 calls go into the end of <i>microtask queue</i> remembering current state value <code>currentValue = 0</code>. When they are executed in future they all will return <code>0</code></p>
 
       <H5><CodeSpan>setState(prevVal => prevVal + 1)</CodeSpan> </H5>
 
@@ -390,70 +335,6 @@ export const postObj = {
       `}</Code>
 
       <SetStateWithPreviousValue />
-
-      <H3>Parent & children render on state update</H3>
-
-      <p>Parent component render triggers all its direct child components render, but not passed within its tags in <code>props.children</code>.</p>
-
-      <Code>{`
-      function blink(el) {
-        el.style.borderColor = 'DeepPink'
-        setTimeout(() => { el.style.borderColor = 'LightGrey' }, 500)
-      }
-
-      function MyParent(props) {
-        const [state, setState] = useState(0)
-        const ref = useRef()
-        const updateState = () => setState(state + 1)
-
-        ref.current && blink(ref.current)
-        return (
-          <div style={style} ref={ref}>
-            <h3>Parent</h3>
-            <button onClick={updateState}>Add +1</button>
-            <div>Value: <b>{state}</b></div>
-            <MyChild text={'Child'}/>
-            <MyChildWithoutStateInJSX />
-            {props.children}
-          </div>
-        )
-      }
-
-      function MyChild(props) {
-        const [state, setState] = useState(0)
-        const updateState = () => setState(state + 1)
-        const ref = useRef()
-
-        ref.current && blink(ref.current)
-        return (
-          <div style={style} ref={ref}>
-            <h3>{props.text}</h3>
-            <div>Value: <b>{state}</b></div>
-            <button onClick={updateState}>Add +1</button>
-          </div>
-        )
-      }
-
-      function MyChildWithoutStateInJSX() {
-        const [state, setState] = useState(0)
-        const updateState = () => setState(state + 1)
-        const ref = useRef()
-
-        ref.current && blink(ref.current)
-        return (
-          <div style={style} ref={ref}>
-            <h3>Child w/o state on screen</h3>
-            <div>No state on screen</div>
-            <button onClick={updateState}>Add +1</button>
-          </div>
-        )
-      }
-      `}</Code>
-
-      <MyParent>
-        <MyChild text={<>Child - passed in <code>props.children</code></>}/>
-      </MyParent>
-
     </>
   ),
 }

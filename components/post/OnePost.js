@@ -77,10 +77,19 @@ export function OnePost(props) {
           margin-left: 5px;
         }
 
+        ol > p, 
+        ul > p,
+        ol > div, 
+        ul > div {
+          position: relative;
+          left: -10px;
+          margin-bottom: 5px;
+        }
+
         li {
-            padding-left: 10px;
-            margin-bottom: 10px;
-          }
+          padding-left: 10px;
+          margin-bottom: 0px;
+        }
 
         ul li::marker {
           content: '-';
